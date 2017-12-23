@@ -1,0 +1,21 @@
+{
+  "generator-ngx-rocket": {
+    "version": "3.1.1",
+    "props": {
+      "appName": "Bleeding-Edge Health",
+      "target": [
+        "web",
+        "cordova"
+      ],
+      "pwa": false,
+      "mobile": [
+        "ios",
+        "android"
+      ],
+      "ui": "ionic",
+      "auth": true,
+      "projectName": "bleeding-edge-health",
+      "packageManager": "npm"
+    }
+  }
+}
