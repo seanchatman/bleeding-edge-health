@@ -1,5 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+firebase.config.ts
 src/environments/firebase.config.ts
 
 # Compiled output
@@ -57,3 +58,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+binarydb
+.config.json
+config.json
+log.txt
+skimdb
+yarn-error.log
