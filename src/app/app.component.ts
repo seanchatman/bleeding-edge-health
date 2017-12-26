@@ -13,6 +13,9 @@ import { environment } from '../environments/environment';
 import { Logger } from './core/logger.service';
 import { I18nService } from './core/i18n.service';
 
+import * as firebase from 'firebase';
+import { firebaseConfig } from '../environments/firebase.config';
+
 const log = new Logger('App');
 
 @Component({
@@ -40,7 +43,8 @@ export class AppComponent implements OnInit {
       Logger.enableProductionMode();
     }
 
-    log.debug('init');
+    // console.log('app.component.ts::ngOnInit', 'firebaseConfig', firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
 
     // Setup translations
     this.i18nService.init(environment.defaultLanguage, environment.supportedLanguages);

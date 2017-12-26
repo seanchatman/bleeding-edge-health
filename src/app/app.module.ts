@@ -1,3 +1,4 @@
+import { SignupComponent } from './signup/signup.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -31,7 +32,7 @@ import { LoginModule } from './login/login.module';
     LoginModule,
     AppRoutingModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, SignupComponent],
   providers: [
     Keyboard,
     StatusBar,

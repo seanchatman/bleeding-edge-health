@@ -4,31 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      // TODO: Replace with your project's customized code snippet
-      var config = {
-        apiKey: "<API_KEY>",
-        authDomain: "<PROJECT_ID>.firebaseapp.com",
-        databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
-        storageBucket: "<BUCKET>.appspot.com",
-        messagingSenderId: "<SENDER_ID>",
-      };
-      firebase.initializeApp(config);
-    </script>
+
 
     <title>Welcome to Firebase Hosting</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/4.8.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/4.8.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.8.1/firebase-database.js"></script>
-    <script defer src="/__/firebase/4.8.1/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/4.8.1/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
 
     <style media="screen">
       body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
@@ -59,20 +38,30 @@
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
         // // The Firebase SDK is initialized and available here!
         //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        firebase.auth().onAuthStateChanged(user => {
+          console.log('index.html::firebase.auth().onAuthStateChanged', 'user', user);
+        });
+        firebase.database().ref('/').on('value', snapshot => {
+          console.log('index.html::firebase.database().ref(\'/\')', 'snapshot', snapshot);
+        });
+        firebase.messaging().requestPermission().then(() => {
+          console.log('index.html::firebase.messaging().requestPermission()', '');
+        });
+        firebase.storage().ref('/').getDownloadURL().then(() => {
+          console.log('index.html::firebase.storage().ref(\'/\').getDownloadURL()', '');
+        });
         //
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
         try {
           let app = firebase.app();
+          console.log('index.html::DOMContentLoaded', 'firebase', firebase);
+          console.log('index.html::DOMContentLoaded', 'app', app);
           let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+          // document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
         } catch (e) {
           console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+          // document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
         }
       });
     </script>

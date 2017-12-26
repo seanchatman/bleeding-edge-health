@@ -38,10 +38,12 @@ export class LoginComponent implements OnInit {
     loading.present();
     this.authenticationService.login(this.loginForm.value)
       .pipe(finalize(() => {
+        debugger;
         this.loginForm.markAsPristine();
         loading.dismiss();
       }))
       .subscribe(credentials => {
+        debugger;
         log.debug(`${credentials.username} successfully logged in`);
         this.router.navigate(['/'], { replaceUrl: true });
       }, error => {

@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { fromPromise } from 'rxjs/observable/fromPromise';
+import { map } from 'rxjs/operator/map';
+import * as firebase from 'firebase';
+import { finalize } from 'rxjs/operators';
 
 export interface Credentials {
   // Customize received credentials here
@@ -39,12 +43,20 @@ export class AuthenticationService {
    */
   login(context: LoginContext): Observable<Credentials> {
     // Replace by proper authentication call
-    const data = {
+    const credentials: Credentials = {
       username: context.username,
       token: '123456'
     };
-    this.setCredentials(data, context.remember);
-    return of(data);
+
+
+    return fromPromise(firebase.auth()
+      .signInWithEmailAndPassword(context.username, context.password))
+      .pipe(
+        finalize(() => {
+          this.setCredentials(credentials);
+          debugger;
+        })
+      )
   }
 
   /**
